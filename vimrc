@@ -1,18 +1,65 @@
-
-"" --------------------------------------------------------------------------------
-"" Installation requirement of Vundle
-"" --------------------------------------------------------------------------------
+" begin Vundle setup
+" be iMproved, required by Vundle
 set nocompatible
+" required by Vundle
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
-Bundle 'altercation/vim-colors-solarized'
-filetype plugin indent on
 
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required by Vundle
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+
+" NERD-tree setup
+map  :NERDTreeToggle
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" end NERD-tree setup
+
+"" " The following are examples of different formats supported.
+"" " Keep Plugin commands between vundle#begin/end.
+"" " plugin on GitHub repo
+"" Plugin 'tpope/vim-fugitive'
+"" " plugin from http://vim-scripts.org/vim/scripts.html
+"" Plugin 'L9'
+"" " Git plugin not hosted on GitHub
+"" Plugin 'git://git.wincent.com/command-t.git'
+"" " git repos on your local machine (i.e. when working on your own plugin)
+"" Plugin 'file:///home/gmarik/path/to/plugin'
+"" " The sparkup vim script is in a subdirectory of this repo called vim.
+"" " Pass the path to set the runtimepath properly.
+"" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+"" " Install L9 and avoid a Naming conflict if you've already installed a
+"" " different version somewhere else.
+"" Plugin 'ascenator/L9', {'name': 'newL9'}
+
+" All of your Plugins must be added before the following line
+call vundle#end()
+
+" required by Vundle
+filetype plugin indent on
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+" end Vundle setup
 
 "" --------------------------------------------------------------------------------
-"" Applearance settings
+"" Appearance settings
 "" --------------------------------------------------------------------------------
 syntax on
 syntax enable
