@@ -20,6 +20,7 @@ Plugin 'Valloric/MatchTagAlways'
 Plugin 'matchit.zip'
 Plugin 'Townk/vim-autoclose'
 Plugin 'vim-scripts/closetag.vim'
+Plugin 'vim-airline/vim-airline'
 
 " NERD-tree setup
 map  :NERDTreeToggle
