@@ -17,6 +17,9 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'Valloric/MatchTagAlways'
+Plugin 'matchit.zip'
+Plugin 'Townk/vim-autoclose'
+Plugin 'vim-scripts/closetag.vim'
 
 " NERD-tree setup
 map  :NERDTreeToggle
