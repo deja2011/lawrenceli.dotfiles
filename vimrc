@@ -131,9 +131,6 @@ set laststatus=2
 " Start scrolling four lines before the horizontal window border
 set scrolloff=4
 
-" Use visual bell instead of beeping when doing something wrong
-set visualbell
-
 " Show line number
 set number
 
