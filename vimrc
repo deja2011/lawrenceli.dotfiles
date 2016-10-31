@@ -21,11 +21,16 @@ Plugin 'matchit.zip'
 Plugin 'Townk/vim-autoclose'
 Plugin 'vim-scripts/closetag.vim'
 Plugin 'vim-airline/vim-airline'
+Plugin 'powerline/fonts'
 
 " NERD-tree setup
 map  :NERDTreeToggle
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " end NERD-tree setup
+
+" airline setup
+let g:airline_powerline_fonts = 1
+" end airline setup
 
 "" " The following are examples of different formats supported.
 "" " Keep Plugin commands between vundle#begin/end.
