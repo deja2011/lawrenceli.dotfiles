@@ -156,8 +156,8 @@ set directory=~/.vimswp
 filetype indent plugin on
 
 " Allow intelligent folding
-set foldenable
-set foldmethod=syntax
+" set foldenable
+set foldmethod=indent
 set foldcolumn=0
 setlocal foldlevel=1
 
