@@ -8,8 +8,6 @@ alias papwd='pushd `apwd`'
 alias lc='ls | wc -l'
 alias vimo='vim -O'
 alias vimp='vim -p'
-alias psd='pushd'
-alias ppd='popd'
 alias mp='mkdir -p'
 
 unset noclobber
@@ -31,10 +29,6 @@ function abspath() {
     fi
 }
 
-stty erase 
-stty werase ^W
-
-snps_zshrc="$HOME/.zshrc.snps"
-if [ -r $snps_zshrc ]; then
-  . $snps_zshrc
+if [ -r "$HOME/.zshrc.local" ]; then
+  . $HOME/.zshrc.local
 fi
