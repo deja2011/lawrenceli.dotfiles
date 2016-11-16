@@ -29,6 +29,86 @@ function abspath() {
     fi
 }
 
+function deactivate_anaconda () {
+
+    # if Anaconda is not activated quit quietly
+    if [ -z "${ANACONDA_ENV+_}" ] ; then
+        return -1
+    fi
+
+    unset -f pydoc >/dev/null 2>&1
+
+    # reset old environment variables
+    # ! [ -z ${VAR+_} ] returns true if VAR is declared at all
+    if ! [ -z "${_OLD_VIRTUAL_PATH+_}" ] ; then
+        PATH="$_OLD_VIRTUAL_PATH"
+        export PATH
+        unset _OLD_VIRTUAL_PATH
+    fi
+    if ! [ -z "${_OLD_VIRTUAL_PYTHONHOME+_}" ] ; then
+        PYTHONHOME="$_OLD_VIRTUAL_PYTHONHOME"
+        export PYTHONHOME
+        unset _OLD_VIRTUAL_PYTHONHOME
+    fi
+
+    # This should detect bash and zsh, which have a hash command that must
+    # be called to get it to forget past commands.  Without forgetting
+    # past commands the $PATH changes we made may not be respected
+    if [ -n "${BASH-}" ] || [ -n "${ZSH_VERSION-}" ] ; then
+        hash -r 2>/dev/null
+    fi
+
+    if ! [ -z "${_OLD_VIRTUAL_PS1+_}" ] ; then
+        PS1="$_OLD_VIRTUAL_PS1"
+        export PS1
+        unset _OLD_VIRTUAL_PS1
+    fi
+
+    unset ANACONDA_ENV
+}
+
+function activate_anaconda () {
+    deactivate_anaconda
+
+    if [ -z "${ANACONDA_PATH+_}" -o ! -f "${ANACONDA_PATH}/bin/python" ]; then
+        echo "Error: Invalid environment variable ANACONDA_PATH." >&2
+        return -1
+    fi
+
+    ANACONDA_ENV="$ANACONDA_PATH"
+    export ANACONDA_ENV
+
+    _OLD_VIRTUAL_PATH="$PATH"
+    PATH="$ANACONDA_PATH/bin:$PATH"
+    export PATH
+
+    # unset PYTHONHOME if set
+    if ! [ -z "${PYTHONHOME+_}" ] ; then
+        _OLD_VIRTUAL_PYTHONHOME="$PYTHONHOME"
+        unset PYTHONHOME
+    fi
+
+    if [ -z "${VIRTUAL_ENV_DISABLE_PROMPT-}" ] ; then
+        _OLD_VIRTUAL_PS1="$PS1"
+        PS1="$PS1(anaconda) "
+        export PS1
+    fi
+
+    # Make sure to unalias pydoc if it's already there
+    alias pydoc 2>/dev/null >/dev/null && unalias pydoc
+
+    pydoc () {
+        python -m pydoc "$@"
+    }
+
+    # This should detect bash and zsh, which have a hash command that must
+    # be called to get it to forget past commands.  Without forgetting
+    # past commands the $PATH changes we made may not be respected
+    if [ -n "${BASH-}" ] || [ -n "${ZSH_VERSION-}" ] ; then
+        hash -r 2>/dev/null
+    fi
+}
+
 if [ -r "$HOME/.zshrc.local" ]; then
   . $HOME/.zshrc.local
 fi
