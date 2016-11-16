@@ -22,6 +22,11 @@ Plugin 'Townk/vim-autoclose'
 Plugin 'vim-scripts/closetag.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'powerline/fonts'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'nvie/vim-flake8'
+
 
 " NERD-tree setup
 map  :NERDTreeToggle
@@ -31,6 +36,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " airline setup
 let g:airline_powerline_fonts = 1
 " end airline setup
+
+" SimpylFold setup
+let g:SimpylFold_docstring_preview = 1
+" end SimpylFold setup
 
 "" " The following are examples of different formats supported.
 "" " Keep Plugin commands between vundle#begin/end.
@@ -89,7 +98,6 @@ let g:murphy_termcolors = 256
 let g:pablo_termcolors = 256
 
 colorscheme solarized
-
 
 "" --------------------------------------------------------------------------------
 "" Basic settings
@@ -157,9 +165,36 @@ filetype indent plugin on
 
 " Allow intelligent folding
 set nofoldenable
+" set foldenable
 set foldmethod=indent
 set foldcolumn=0
 setlocal foldlevel=1
+
+" Force unix format
+set fileformat=unix
+
+" Force encoding
+set encoding=utf-8
+
+" Per file type format setup
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set expandtab |
+    \ set autoindent |
+
+au BufNewFile,BufRead *.js,*.html,*.css
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+
+" Flag out unnecessary whitespace
+highlight BadWhitespace ctermbg=red guibg=darkred
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+" Enable python_highlight_all
+let g:python_highlight_all=1
 
 " Map <C-L> (redraw screen) to also trun off search highlighting until the
 " next search
