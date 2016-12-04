@@ -19,6 +19,7 @@ alias lc='ls | wc -l'
 alias vimo='vim -O'
 alias vimp='vim -p'
 alias mp='mkdir -p'
+alias ta='tmux attach -t'
 
 unset noclobber
 
