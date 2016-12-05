@@ -20,6 +20,7 @@ alias vimo='vim -O'
 alias vimp='vim -p'
 alias mp='mkdir -p'
 alias ta='tmux attach -t'
+alias igrep='grep -i'
 
 unset noclobber
 
