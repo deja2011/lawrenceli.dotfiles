@@ -8,19 +8,15 @@ export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 # ZSH man page highlight end
 
-alias j="jobs"
+alias j="jobs -l"
 alias dud1='du -h --max-depth=1 | sort -h'
 alias cpwd='cd `pwd`'
-alias ppwd='pushd `pwd`'
 alias apwd='pwd -P'
-alias capwd='cd `apwd`'
-alias papwd='pushd `apwd`'
-alias lc='ls | wc -l'
 alias vimo='vim -O'
 alias vimp='vim -p'
 alias mp='mkdir -p'
 alias ta='tmux attach -t'
-alias igrep='grep -i'
+alias pyserver="python -m SimpleHTTPServer"
 
 unset noclobber
 
