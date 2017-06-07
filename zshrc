@@ -117,6 +117,12 @@ function activate_anaconda () {
     fi
 }
 
+if [ -d "$HOME/.nvm" ]; then
+    export NVM_DIR="$HOME/.nvm"
+    export NVM_NODEJS_ORG_MIRROR="https://npm.taobao.org/mirrors/node/"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+fi
+
 if [ -r "$HOME/.zshrc.local" ]; then
   . $HOME/.zshrc.local
 fi
