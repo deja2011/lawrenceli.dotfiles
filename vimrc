@@ -31,6 +31,7 @@ Plugin 'nvie/vim-flake8'
 " NERD-tree setup
 map  :NERDTreeToggle
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let g:NERDTreeWinPos = "right"
 " end NERD-tree setup
 
 " airline setup
