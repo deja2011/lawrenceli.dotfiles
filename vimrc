@@ -1,8 +1,7 @@
 " begin Vundle setup
-" be iMproved, required by Vundle
-set nocompatible
-" required by Vundle
-filetype off
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -10,7 +9,7 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required by Vundle
+" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-fugitive'
@@ -60,10 +59,8 @@ let g:SimpylFold_docstring_preview = 1
 "" Plugin 'ascenator/L9', {'name': 'newL9'}
 
 " All of your Plugins must be added before the following line
-call vundle#end()
-
-" required by Vundle
-filetype plugin indent on
+call vundle#end()            " required
+filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 
@@ -155,7 +152,7 @@ set expandtab
 
 " Enable swapfile and customize swap file directory to ~/.vimswp
 set swapfile
-set directory=~/.vimswp
+set directory=~/.vim/vimswp
 
 " Allow intelligent auto-indenting for each filetype, and for plugins that are
 " filetype specific
