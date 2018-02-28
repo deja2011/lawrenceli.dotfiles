@@ -17,6 +17,7 @@ alias vimp='vim -p'
 alias mp='mkdir -p'
 alias ta='tmux attach -t'
 alias pyserver="python -m SimpleHTTPServer"
+alias q="QHOME=$HOME/q rlwrap -r $HOME/q/l32/q"
 
 unset noclobber
 
