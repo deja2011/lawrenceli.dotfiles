@@ -1,3 +1,7 @@
+# PATH
+
+export PATH="$HOME/.local/bin:$PATH"
+
 # ZSH man page highlight
 export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
 export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
@@ -9,16 +13,18 @@ export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 # ZSH man page highlight end
 
 alias j="jobs -l"
-alias dud1='du -h --max-depth=1 | sort -h'
+alias duh='du -h --max-depth=1 | sort -h'
 alias cpwd='cd `pwd`'
 alias apwd='pwd -P'
 alias vimo='vim -O'
 alias vimp='vim -p'
 alias mp='mkdir -p'
-alias ta='tmux attach -t'
-alias pyserver="python -m SimpleHTTPServer"
-alias q="rlwrap -r $QHOME/l32/q"
-alias vi="vim"
+alias tmxa='tmux attach -t'
+alias tmxl='tmux -l'
+alias pyserver='python -m SimpleHTTPServer'
+alias q='rlwrap -r $QHOME/l32/q'
+alias vi='vim'
+alias lastmod='f(){ find $1 -type f -printf "%TY-%Tm-%Td %TT %p\\n" | sort -r | head -n $2 }; f'
 
 unset noclobber
 

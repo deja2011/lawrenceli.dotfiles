@@ -20,7 +20,7 @@ Plugin 'matchit.zip'
 "Plugin 'Townk/vim-autoclose'
 Plugin 'vim-scripts/closetag.vim'
 Plugin 'vim-airline/vim-airline'
-Plugin 'powerline/fonts'
+"Plugin 'powerline/fonts'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'scrooloose/syntastic'
@@ -188,13 +188,14 @@ au BufNewFile,BufRead *.html,*.css
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
 
-" Flag out unnecessary whitespace
-highlight BadWhitespace ctermbg=red guibg=darkred
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+"" Flag out unnecessary whitespace
+"highlight BadWhitespace ctermbg=red guibg=darkred
+"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " Enable python_highlight_all
 let g:python_highlight_all=1
 
 " Map <C-L> (redraw screen) to also trun off search highlighting until the
 " next search
-nnoremap  :nohl
+nnoremap  :nohl
+
