@@ -1,6 +1,8 @@
 #!/bin/sh -x
 
+export DOTFILES=$HOME/.lawrenceli.dotfiles
 mkdir -p $HOME/.local
+mkdir -p $HOME/.config
 mkdir -p $HOME/Downloads
 
 # Install packs and libs
@@ -20,7 +22,7 @@ sudo apt-get install -y zlib1g-dev
 sudo apt-get install -y zsh
 # Setup zsh
 sudo chsh -s /usr/bin/zsh
-ln -sv $HOME/Workplace/lawrenceli.dotfiles/zshrc $HOME/.zshrc.$(whoami)
+ln -sv $DOTFILES/zshrc $HOME/.zshrc.$(whoami)
 echo 'user_zshconfig=$HOME/.zshrc.$(whoami)' >> $HOME/.zshrc
 echo 'if [ -f $user_zshconfig ]; then' >> $HOME/.zshrc
 echo '    source $user_zshconfig' >> $HOME/.zshrc
@@ -28,7 +30,7 @@ echo 'fi' >> $HOME/.zshrc
 
 # Install tmux
 sudo apt-get install -y tmux
-ln -sv $HOME/Workplace/tmux.conf $HOME/.tmux.conf
+ln -sv $DOTFILES/tmux.conf $HOME/.tmux.conf
 
 # Create user local directory
 sudo mkdir -p /usr/local/install
@@ -63,9 +65,12 @@ cd vim-master
     --enable-luainterp=yes \
     --enable-cscope \
     --prefix="$HOME/.local" && make && sudo make install
-# Setup Vim
-ln -sv $HOME/Workplace/vimrc $HOME/.vimrc
+ln -sv $DOTFILES/vimrc $HOME/.vimrc
 mkdir -p $HOME/.vim/bundle
 mkdir -p $HOME/.vim/vimswp
 git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 /usr/local/bin/vim +PluginInstall +qall
+
+# Setup pip
+mkdir -p $HOME/.config/pip
+ln -sv $DOTFILES/pip.conf $HOME/.config/pip/pip.conf

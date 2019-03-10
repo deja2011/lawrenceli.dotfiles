@@ -95,7 +95,7 @@ let g:morning_termcolors = 256
 let g:murphy_termcolors = 256
 let g:pablo_termcolors = 256
 
-colorscheme solarized
+colorscheme tango
 
 "" --------------------------------------------------------------------------------
 "" Basic settings
@@ -198,4 +198,3 @@ let g:python_highlight_all=1
 " Map <C-L> (redraw screen) to also trun off search highlighting until the
 " next search
 nnoremap  :nohl
-
