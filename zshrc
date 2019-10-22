@@ -13,6 +13,7 @@ export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 # ZSH man page highlight end
 
 alias j="jobs -l"
+alias l="less"
 alias duh='du -h --max-depth=1 | sort -h'
 alias cpwd='cd `pwd`'
 alias apwd='pwd -P'
@@ -129,4 +130,10 @@ if [ -d "$HOME/.nvm" ]; then
     export NVM_DIR="$HOME/.nvm"
     export NVM_NODEJS_ORG_MIRROR="https://npm.taobao.org/mirrors/node/"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+fi
+
+if [ -d "$HOME/.pyenv" ]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
 fi
