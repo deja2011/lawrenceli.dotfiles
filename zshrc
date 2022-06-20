@@ -126,6 +126,24 @@ function activate_anaconda () {
     fi
 }
 
+# Fetch Windows ip address inside WSL environment
+export WINDOWS_IP=$(ip route | grep default | awk '{print $3}')
+PROXY_HTTP="http://${WINDOWS_IP}:7890"
+PROXY_SOCKS5="${WINDOWS_IP}:7890"
+function set_proxy () {
+    export http_proxy="${PROXY_HTTP}"
+    export https_proxy="${PROXY_HTTP}"
+}
+
+function unset_proxy () {
+    unset http_proxy
+    unset https_proxy
+}
+alias proxy=set_proxy
+alias deproxy=unset_proxy
+
+export DISPLAY="${WINDOWS_IP}:0.0"
+
 if [ -d "$HOME/.nvm" ]; then
     export NVM_DIR="$HOME/.nvm"
     export NVM_NODEJS_ORG_MIRROR="https://npm.taobao.org/mirrors/node/"
@@ -134,6 +152,6 @@ fi
 
 if [ -d "$HOME/.pyenv" ]; then
     export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
+    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init -)"
 fi
