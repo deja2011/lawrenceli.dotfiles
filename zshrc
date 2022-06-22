@@ -16,8 +16,14 @@ alias pyserver='python -m SimpleHTTPServer'
 alias q='rlwrap -r $QHOME/l32/q'
 alias vi='vim'
 alias lastmod='f(){ find $1 -type f -printf "%TY-%Tm-%Td %TT %p\\n" | sort -r | head -n $2 }; f'
+alias cs="cd $HOME/source"
 
 unset noclobber
+
+function sfind() {
+    # smart finder that auto excludes subdirs of venv __pycache__ .git .idea .vscode
+    find $* -not -path '*/venv*/*' -not -path '*/__pycache__/*' -not -path '*/.git/*' -not -path '*/.idea/*' -not -path '*/.vscode/*'
+}
 
 function abspath() {
     # generate absolute path from relative path
@@ -144,4 +150,9 @@ if [ -d "$HOME/.pyenv" ]; then
     export PYENV_ROOT="$HOME/.pyenv"
     command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init -)"
+fi
+
+if [ -d "$HOME/go" ]; then
+    export GOPATH="$HOME/go"
+    export PATH="$GOPATH/bin:$PATH"
 fi
