@@ -15,16 +15,16 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'Valloric/MatchTagAlways'
+"Plugin 'Valloric/MatchTagAlways'
 Plugin 'matchit.zip'
 "Plugin 'Townk/vim-autoclose'
 Plugin 'vim-scripts/closetag.vim'
 Plugin 'vim-airline/vim-airline'
 "Plugin 'powerline/fonts'
 Plugin 'tmhedberg/SimpylFold'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'nvie/vim-flake8'
+"Plugin 'vim-scripts/indentpython.vim'
+"Plugin 'scrooloose/syntastic'
+"Plugin 'nvie/vim-flake8'
 
 
 " NERD-tree setup
@@ -146,9 +146,9 @@ set scrolloff=4
 set number
 
 " Indentation settings for using 2 spaces instead of tabs.
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 
 " Enable swapfile and customize swap file directory to ~/.vimswp
@@ -177,9 +177,9 @@ set encoding=utf-8
 
 " Per file type format setup
 au BufNewFile,BufRead *.py
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2 |
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
     \ set expandtab |
     \ set autoindent |
 

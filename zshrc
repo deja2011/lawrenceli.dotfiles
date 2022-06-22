@@ -2,16 +2,6 @@
 
 export PATH="$HOME/.local/bin:$PATH"
 
-# ZSH man page highlight
-export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
-export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
-export LESS_TERMCAP_me=$'\E[0m'           # end mode
-export LESS_TERMCAP_se=$'\E[0m'           # end standout-mode
-export LESS_TERMCAP_so=$'\E[38;5;246m'    # begin standout-mode - info box
-export LESS_TERMCAP_ue=$'\E[0m'           # end underline
-export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
-# ZSH man page highlight end
-
 alias j="jobs -l"
 alias l="less"
 alias duh='du -h --max-depth=1 | sort -h'
@@ -127,22 +117,22 @@ function activate_anaconda () {
 }
 
 # Fetch Windows ip address inside WSL environment
-export WINDOWS_IP=$(ip route | grep default | awk '{print $3}')
-PROXY_HTTP="http://${WINDOWS_IP}:7890"
-PROXY_SOCKS5="${WINDOWS_IP}:7890"
-function set_proxy () {
-    export http_proxy="${PROXY_HTTP}"
-    export https_proxy="${PROXY_HTTP}"
-}
-
-function unset_proxy () {
-    unset http_proxy
-    unset https_proxy
-}
-alias proxy=set_proxy
-alias deproxy=unset_proxy
-
-export DISPLAY="${WINDOWS_IP}:0.0"
+if grep -qi microsoft /proc/version; then
+    export WINDOWS_IP=$(command -v pyenv >/dev/null || ip route | grep default | awk '{print $3}')
+    PROXY_HTTP="http://${WINDOWS_IP}:7890"
+    PROXY_SOCKS5="${WINDOWS_IP}:7890"
+    function set_proxy () {
+        export http_proxy="${PROXY_HTTP}"
+        export https_proxy="${PROXY_HTTP}"
+    }
+    function unset_proxy () {
+        unset http_proxy
+        unset https_proxy
+    }
+    alias proxy=set_proxy
+    alias deproxy=unset_proxy
+    export DISPLAY="${WINDOWS_IP}:0.0"
+fi
 
 if [ -d "$HOME/.nvm" ]; then
     export NVM_DIR="$HOME/.nvm"
