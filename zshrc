@@ -123,7 +123,7 @@ function activate_anaconda () {
 }
 
 # Fetch Windows ip address inside WSL environment
-if grep -qi microsoft /proc/version; then
+if grep -qi microsoft /proc/version 2>/dev/null; then
     export WINDOWS_IP=$(command -v pyenv >/dev/null || ip route | grep default | awk '{print $3}')
     PROXY_HTTP="http://${WINDOWS_IP}:7890"
     PROXY_SOCKS5="${WINDOWS_IP}:7890"
