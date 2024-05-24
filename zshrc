@@ -13,16 +13,14 @@ alias mp='mkdir -p'
 alias tmxa='tmux attach -t'
 alias tmxl='tmux -l'
 alias pyserver='python -m SimpleHTTPServer'
-alias q='rlwrap -r $QHOME/l32/q'
 alias vi='vim'
 alias lastmod='f(){ find $1 -type f -printf "%TY-%Tm-%Td %TT %p\\n" | sort -r | head -n $2 }; f'
-alias cs="cd $HOME/source"
 
 unset noclobber
 
 function sfind() {
     # smart finder that auto excludes subdirs of venv __pycache__ .git .idea .vscode
-    find $* -not -path '*/venv*/*' -not -path '*/__pycache__/*' -not -path '*/.git/*' -not -path '*/.idea/*' -not -path '*/.vscode/*'
+    find $* -not -path '*/venv*/*' -not -path '*/.venv*/*' -not -path '*/__pycache__/*' -not -path '*/.git/*' -not -path '*/.idea/*' -not -path '*/.vscode/*'
 }
 
 function abspath() {
@@ -142,8 +140,9 @@ fi
 
 if [ -d "$HOME/.nvm" ]; then
     export NVM_DIR="$HOME/.nvm"
-    export NVM_NODEJS_ORG_MIRROR="https://npm.taobao.org/mirrors/node/"
+    export NVM_NODEJS_ORG_MIRROR=https://nodejs.org/dist
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
 if [ -d "$HOME/.pyenv" ]; then
@@ -155,4 +154,8 @@ fi
 if [ -d "$HOME/go" ]; then
     export GOPATH="$HOME/go"
     export PATH="$GOPATH/bin:$PATH"
+fi
+
+if [ -d "$HOME/l32/q" ]; then
+    alias q='rlwrap -r $QHOME/l32/q'
 fi

@@ -22,4 +22,12 @@ def from_dt(*args) -> int:
         dt = datetime(*args)
     return int(dt.timestamp() * 1000)
 
+
+def spread(bid: float, ask: float) -> tuple[float, float]:
+    mid = 0.5 * (bid + ask)
+    diff = ask - bid
+    spread = diff / mid
+    return f"{mid=} {diff=} {spread=}"
+
+
 print(f"Done load IPython profile from {__file__}")
