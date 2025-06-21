@@ -15,12 +15,14 @@ alias tmxl='tmux -l'
 alias pyserver='python -m SimpleHTTPServer'
 alias vi='vim'
 alias lastmod='f(){ find $1 -type f -printf "%TY-%Tm-%Td %TT %p\\n" | sort -r | head -n $2 }; f'
+alias pubip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias gpap="git pull --all --prune"
 
 unset noclobber
 
 function sfind() {
     # smart finder that auto excludes subdirs of venv __pycache__ .git .idea .vscode
-    find $* -not -path '*/venv*/*' -not -path '*/.venv*/*' -not -path '*/__pycache__/*' -not -path '*/.git/*' -not -path '*/.idea/*' -not -path '*/.vscode/*'
+    find $* -not -path '*/target/*' -not -path '*/venv*/*' -not -path '*/.venv*/*' -not -path '*/__pycache__/*' -not -path '*/.git/*' -not -path '*/.idea/*' -not -path '*/.vscode/*'
 }
 
 function abspath() {
