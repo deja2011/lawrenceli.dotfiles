@@ -2,21 +2,31 @@
 
 export PATH="$HOME/.local/bin:$PATH"
 
+# shell alias
 alias j="jobs -l"
 alias l="less"
-alias duh='du -h --max-depth=1 | sort -h'
+alias duh="du -h --max-depth=1 | sort -h"
 alias cpwd='cd `pwd`'
-alias apwd='pwd -P'
-alias vimo='vim -O'
-alias vimp='vim -p'
-alias mp='mkdir -p'
-alias tmxa='tmux attach -t'
-alias tmxl='tmux -l'
-alias pyserver='python -m SimpleHTTPServer'
-alias vi='vim'
+alias apwd="pwd -P"
+alias mp="mkdir -p"
 alias lastmod='f(){ find $1 -type f -printf "%TY-%Tm-%Td %TT %p\\n" | sort -r | head -n $2 }; f'
 alias pubip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias gpap="git pull --all --prune"
+
+# vim alias
+alias vi="vim"
+alias vimo="vim -O"
+alias vimp="vim -p"
+
+# tmux alias
+alias tmxa="tmux attach -t"
+alias tmxl="tmux -l"
+
+# git alias
+alias gpap="git pull --all --prune"
+
+# python alias
+alias uvxipy="uvx --with 'ipython,pandas,numpy,matplotlib,scipy,statsmodels,scikit-learn,seaborn' ipython"
 
 unset noclobber
 
@@ -140,24 +150,3 @@ if grep -qi microsoft /proc/version 2>/dev/null; then
     export DISPLAY="${WINDOWS_IP}:0.0"
 fi
 
-if [ -d "$HOME/.nvm" ]; then
-    export NVM_DIR="$HOME/.nvm"
-    export NVM_NODEJS_ORG_MIRROR=https://nodejs.org/dist
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-fi
-
-if [ -d "$HOME/.pyenv" ]; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init -)"
-fi
-
-if [ -d "$HOME/go" ]; then
-    export GOPATH="$HOME/go"
-    export PATH="$GOPATH/bin:$PATH"
-fi
-
-if [ -d "$HOME/l32/q" ]; then
-    alias q='rlwrap -r $QHOME/l32/q'
-fi
