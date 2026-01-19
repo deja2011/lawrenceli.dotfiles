@@ -24,9 +24,19 @@ alias tmxl="tmux -l"
 
 # git alias
 alias gpap="git pull --all --prune"
+alias gcmn="git checkout main"
+alias gcmt="git checkout master"
+alias gt="git describe --tags --abbrev=0"
+gtap() {
+    if [ -z "$1" ]; then
+        echo "Usage: gtap <tag>"
+        return 1
+    fi
+    git tag -a "$1" -m "$1" && git push origin --tags
+}
 
 # python alias
-alias uvxipy="uvx --with 'ipython,pandas,numpy,matplotlib,scipy,statsmodels,scikit-learn,seaborn' ipython"
+alias uvxipy="uvx --with 'ipython,pandas,numpy,matplotlib,scipy,statsmodels,scikit-learn,seaborn,httpx,boto3,web3' ipython"
 
 unset noclobber
 
