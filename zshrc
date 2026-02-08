@@ -1,6 +1,7 @@
-# PATH
-
-export PATH="$HOME/.local/bin:$PATH"
+# Add ~/.local/bin to PATH if not already present
+if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
+    export PATH="$HOME/.local/bin:$PATH"
+fi
 
 # shell alias
 alias j="jobs -l"
@@ -11,7 +12,6 @@ alias apwd="pwd -P"
 alias mp="mkdir -p"
 alias lastmod='f(){ find $1 -type f -printf "%TY-%Tm-%Td %TT %p\\n" | sort -r | head -n $2 }; f'
 alias pubip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias gpap="git pull --all --prune"
 
 # vim alias
 alias vi="vim"
@@ -159,4 +159,3 @@ if grep -qi microsoft /proc/version 2>/dev/null; then
     alias deproxy=unset_proxy
     export DISPLAY="${WINDOWS_IP}:0.0"
 fi
-
