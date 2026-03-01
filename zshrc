@@ -26,7 +26,7 @@ alias tmxl="tmux -l"
 alias gpap="git pull --all --prune"
 alias gcmn="git checkout main"
 alias gcmt="git checkout master"
-alias gt="git describe --tags --abbrev=0"
+alias gdt="git describe --tags --abbrev=0"
 gtap() {
     if [ -z "$1" ]; then
         echo "Usage: gtap <tag>"
