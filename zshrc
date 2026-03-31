@@ -35,8 +35,11 @@ gtap() {
     git tag -a "$1" -m "$1" && git push origin --tags
 }
 
-# python alias
-alias uvxipy="uvx --with 'ipython,pandas,numpy,matplotlib,scipy,statsmodels,scikit-learn,seaborn,httpx,boto3,web3' ipython"
+command -v uv &>/dev/null && {
+    uv tool list | grep -q ipython \
+    || uv tool install ipython \
+    --with 'pandas,numpy,matplotlib,scipy,statsmodels,scikit-learn,seaborn,httpx,boto3,web3'
+}
 
 unset noclobber
 
@@ -64,40 +67,40 @@ function abspath() {
 
 function deactivate_anaconda () {
 
-    # if Anaconda is not activated quit quietly
-    if [ -z "${ANACONDA_ENV+_}" ] ; then
-        return -1
-    fi
+# if Anaconda is not activated quit quietly
+if [ -z "${ANACONDA_ENV+_}" ] ; then
+    return -1
+fi
 
-    unset -f pydoc >/dev/null 2>&1
+unset -f pydoc >/dev/null 2>&1
 
-    # reset old environment variables
-    # ! [ -z ${VAR+_} ] returns true if VAR is declared at all
-    if ! [ -z "${_OLD_VIRTUAL_PATH+_}" ] ; then
-        PATH="$_OLD_VIRTUAL_PATH"
-        export PATH
-        unset _OLD_VIRTUAL_PATH
-    fi
-    if ! [ -z "${_OLD_VIRTUAL_PYTHONHOME+_}" ] ; then
-        PYTHONHOME="$_OLD_VIRTUAL_PYTHONHOME"
-        export PYTHONHOME
-        unset _OLD_VIRTUAL_PYTHONHOME
-    fi
+# reset old environment variables
+# ! [ -z ${VAR+_} ] returns true if VAR is declared at all
+if ! [ -z "${_OLD_VIRTUAL_PATH+_}" ] ; then
+    PATH="$_OLD_VIRTUAL_PATH"
+    export PATH
+    unset _OLD_VIRTUAL_PATH
+fi
+if ! [ -z "${_OLD_VIRTUAL_PYTHONHOME+_}" ] ; then
+    PYTHONHOME="$_OLD_VIRTUAL_PYTHONHOME"
+    export PYTHONHOME
+    unset _OLD_VIRTUAL_PYTHONHOME
+fi
 
-    # This should detect bash and zsh, which have a hash command that must
-    # be called to get it to forget past commands.  Without forgetting
-    # past commands the $PATH changes we made may not be respected
-    if [ -n "${BASH-}" ] || [ -n "${ZSH_VERSION-}" ] ; then
-        hash -r 2>/dev/null
-    fi
+# This should detect bash and zsh, which have a hash command that must
+# be called to get it to forget past commands.  Without forgetting
+# past commands the $PATH changes we made may not be respected
+if [ -n "${BASH-}" ] || [ -n "${ZSH_VERSION-}" ] ; then
+    hash -r 2>/dev/null
+fi
 
-    if ! [ -z "${_OLD_VIRTUAL_PS1+_}" ] ; then
-        PS1="$_OLD_VIRTUAL_PS1"
-        export PS1
-        unset _OLD_VIRTUAL_PS1
-    fi
+if ! [ -z "${_OLD_VIRTUAL_PS1+_}" ] ; then
+    PS1="$_OLD_VIRTUAL_PS1"
+    export PS1
+    unset _OLD_VIRTUAL_PS1
+fi
 
-    unset ANACONDA_ENV
+unset ANACONDA_ENV
 }
 
 function activate_anaconda () {
@@ -151,11 +154,11 @@ if grep -qi microsoft /proc/version 2>/dev/null; then
         export http_proxy="${PROXY_HTTP}"
         export https_proxy="${PROXY_HTTP}"
     }
-    function unset_proxy () {
-        unset http_proxy
-        unset https_proxy
-    }
-    alias proxy=set_proxy
-    alias deproxy=unset_proxy
-    export DISPLAY="${WINDOWS_IP}:0.0"
+function unset_proxy () {
+    unset http_proxy
+    unset https_proxy
+}
+alias proxy=set_proxy
+alias deproxy=unset_proxy
+export DISPLAY="${WINDOWS_IP}:0.0"
 fi

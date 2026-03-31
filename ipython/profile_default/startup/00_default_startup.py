@@ -1,5 +1,5 @@
-print(f"Loading IPython profile from {__file__}")
-from datetime import datetime
+print(f"Loading IPython profile from {__file__} ... ", end="")
+from datetime import datetime  # noqa: E402
 
 try:
     import pandas as pd
@@ -30,4 +30,4 @@ def spread(bid: float, ask: float) -> tuple[float, float]:
     return f"{mid=} {diff=} {spread=}"
 
 
-print(f"Done load IPython profile from {__file__}")
+print("Done")
