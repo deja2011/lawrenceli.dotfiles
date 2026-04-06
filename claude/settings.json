@@ -4,7 +4,8 @@
     "command": "~/.claude/statusline.sh"
   },
   "enabledPlugins": {
-    "claude-mem@thedotmack": true
+    "claude-mem@thedotmack": true,
+    "discord@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "thedotmack": {
@@ -13,7 +14,5 @@
         "repo": "thedotmack/claude-mem"
       }
     }
-  },
-  "effortLevel": "high",
-  "model": "opus"
+  }
 }

@@ -38,6 +38,5 @@ If all checks pass:
 
 ## Usage
 ```
-/issue-plan aiolos-lib 42
-/issue-plan vortex 7
+/issue-plan repo1 42
 ```
