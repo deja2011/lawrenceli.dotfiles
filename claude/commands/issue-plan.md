@@ -2,7 +2,7 @@ You will receive two arguments as a single string: "$ARGUMENTS"
 
 Parse them as follows:
 - First token = REPO (the subdirectory name of the target git repo)
-- Second token = ISSUE_ID (an integer GitHub issue number)
+- Second token = `ISSUE_ID` (an integer GitHub issue number)
 
 Then execute these steps in order:
 
@@ -16,7 +16,7 @@ If any verification fails, print a clear error message and stop — do not proce
 
 If all checks pass:
 
-4. **Derive the branch name** — read the issue title from the `gh issue view` output. Slugify it to at most 5 `dash-case` words. Compose the branch name as `{ISSUE_ID}-{short-description}` (e.g. `42-add-order-retry-logic`).
+4. **Derive the branch name** — read the issue title from the `gh issue view` output. Slugify it to at most 5 `kebab-case` words. Compose the branch name as `{ISSUE_ID}-{short-description}` (e.g. `42-add-order-retry-logic`).
 
 5. **Checkout the branch** — from within REPO:
    - If the branch already exists locally or remotely, check it out (`git checkout` / `git checkout --track`).
