@@ -8,7 +8,7 @@ Then execute these steps in order:
 
 1. **Verify REPO is accessible** — confirm that REPO exists as a directory reachable from the current working directory. Abort with an error if not found.
 2. **Verify the issue exists and is open** — run `gh issue view $ISSUE_ID --repo $(cd REPO && gh repo view --json nameWithOwner -q .nameWithOwner)` from within REPO. Abort if the issue does not exist or its state is not `OPEN`.
-3. **Verify the `tasks/` directory exists** inside REPO. Abort if it is missing.
+3. **Verify the `var/tasks/` directory exists** inside REPO. Abort if it is missing.
 
 If any verification fails, print a clear error message and stop — do not proceed.
 
@@ -30,7 +30,7 @@ If all checks pass:
    - **Open questions** — anything ambiguous in the issue that needs clarification before or during implementation.
    - **Out of scope** — explicit list of things the issue does *not* ask for, to prevent scope creep.
 
-7. **Write or refine the plan file** at `REPO/tasks/{branch-name}.md`:
+7. **Write or refine the plan file** at `REPO/var/tasks/{branch-name}.md`:
    - If the file **does not exist**, create it with the plan generated in step 6.
    - If the file **already exists**, read it, compare it against the current issue content, and produce a refined version — preserving any manual edits or completed checklist items while updating stale sections and appending new tasks where appropriate. Clearly note any changes made in a `## Revision notes` section at the top.
 

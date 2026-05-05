@@ -19,6 +19,5 @@
     }
   },
   "effortLevel": "medium",
-  "skipAutoPermissionPrompt": true,
-  "model": "opus"
+  "skipAutoPermissionPrompt": true
 }
