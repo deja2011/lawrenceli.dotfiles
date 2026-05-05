@@ -38,7 +38,7 @@ gtap() {
 command -v uv &>/dev/null && {
     uv tool list | grep -q ipython \
     || uv tool install ipython \
-    --with 'pandas,numpy,matplotlib,scipy,statsmodels,scikit-learn,seaborn,httpx,boto3,web3'
+    --with 'pandas,numpy,matplotlib,scipy,statsmodels,scikit-learn,seaborn,httpx,boto3,web3,pyarrow'
 }
 
 unset noclobber

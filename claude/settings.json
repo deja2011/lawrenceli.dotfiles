@@ -1,11 +1,14 @@
 {
+  "permissions": {
+    "defaultMode": "auto"
+  },
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.sh"
   },
   "enabledPlugins": {
     "claude-mem@thedotmack": true,
-    "discord@claude-plugins-official": true
+    "discord@claude-plugins-official": false
   },
   "extraKnownMarketplaces": {
     "thedotmack": {
@@ -14,5 +17,8 @@
         "repo": "thedotmack/claude-mem"
       }
     }
-  }
+  },
+  "effortLevel": "medium",
+  "skipAutoPermissionPrompt": true,
+  "model": "opus"
 }
