@@ -45,7 +45,7 @@ Do exactly this, in order:
        -F o=[OWNER] -F r=[REPO] -F n=[PR_NUMBER]
    For each unresolved thread whose first comment body contains "review-oc-gpt":
      a. Re-read the relevant file(s) at the current HEAD to determine if the issue you raised is now fixed.
-     b. If fixed, resolve the thread via the `resolveReviewThread` GraphQL mutation, and post a brief reply on the thread (also tagged "review-oc-gpt") noting it is resolved and at which commit (`git rev-parse HEAD`).
+     b. If fixed, post a brief reply on the existing review thread (also a line-anchored review comment by virtue of replying — use `gh api repos/[OWNER]/[REPO]/pulls/[PR_NUMBER]/comments/<root_comment_id>/replies --method POST --field body="..."`), tagged "review-oc-gpt", noting it is resolved and at which commit (`git rev-parse HEAD`). Then resolve the thread via the `resolveReviewThread` GraphQL mutation.
      c. If NOT fixed, leave it alone — do not duplicate or re-comment.
 
 2. Re-review the latest version of the PR end-to-end. Focus on critical issues only:
@@ -57,7 +57,27 @@ Do exactly this, in order:
      - public API / contract breakage
    Do NOT comment on style, naming, formatting, minor refactors, or speculative concerns. If there is nothing critical, do NOT post any new PR comment — proceed to step 4 and report "all clear" only in the final stdout summary.
 
-3. For each critical issue found that is NOT already covered by an existing open "review-oc-gpt" thread, leave a new inline review comment via `gh pr review [PR_NUMBER] --comment` (or `gh api` for line-anchored comments). Every comment body MUST:
+3. For each critical issue found that is NOT already covered by an existing open "review-oc-gpt" thread, leave a **line-anchored Pull Request Review Comment** (the kind that has a "Resolve conversation" button — backed by GitHub's pull request review comments API). Do NOT use `gh pr comment` — that posts a general PR conversation comment with no resolve button, which is the wrong type for this workflow. There is no first-class `gh` subcommand for line comments, so call the REST API directly:
+
+   ```sh
+   # a. Get the head commit SHA of the PR (line comments must anchor to a commit)
+   HEAD_SHA=$(gh api repos/[OWNER]/[REPO]/pulls/[PR_NUMBER] --jq '.head.sha')
+
+   # b. Create one review with one or more line-anchored comments batched together
+   gh api repos/[OWNER]/[REPO]/pulls/[PR_NUMBER]/reviews \
+     --method POST \
+     --field event="COMMENT" \
+     --field body="" \
+     --field "comments[][path]=<file path>" \
+     --field "comments[][line]=<line number on the RIGHT side of the diff>" \
+     --field "comments[][side]=RIGHT" \
+     --field "comments[][body]=<comment body, starting with review-oc-gpt marker>" \
+     --field "comments[][commit_id]=$HEAD_SHA"
+   ```
+
+   Repeat the `comments[][...]` block for each finding to batch them in a single review call. The `path` and `line` MUST refer to a line that is part of the PR diff on the RIGHT (new) side; verify with `gh pr diff [PR_NUMBER]` before posting, otherwise the API rejects the comment.
+
+   Every comment body MUST:
      - start with the literal marker "review-oc-gpt" on its own line, so future iterations can identify it
      - state the file:line, the problem, why it matters, and a concrete suggested fix
      - be specific and actionable; no vague "consider …" framing
@@ -78,6 +98,6 @@ Constraints:
 ## Usage
 
 ```
-/review-pr-oc-gpt           # use PR of current branch
-/review-pr-oc-gpt 1234      # explicit PR number
+/review-oc-gpt           # use PR of current branch
+/review-oc-gpt 1234      # explicit PR number
 ```
