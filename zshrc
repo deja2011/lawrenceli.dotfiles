@@ -12,6 +12,7 @@ alias apwd="pwd -P"
 alias mp="mkdir -p"
 alias lastmod='f(){ find $1 -type f -printf "%TY-%Tm-%Td %TT %p\\n" | sort -r | head -n $2 }; f'
 alias pubip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias copilot-aaa="copilot --allow-all --autopilot"
 
 # vim alias
 alias vi="vim"

@@ -15,8 +15,8 @@ Then execute these steps in order, scoped entirely to the REPO directory:
    - Body describing what was changed and why
    - Capture the returned issue number as `ISSUE_ID`
 5. Checkout a new branch named `{ISSUE_ID}-{short-description}` where `short-description` is a `dash-case` slug of the issue title (max 5 words)
-6. Write down all the specs and plans related to this code change to var/tasks/{branch-name}.md. Create `var/tasks/` if not exist.
-7. Stage and commit all changes inside REPO with a conventional commit message referencing the issue
+6. Write down all the specs and plans related to this code change to `var/tasks/{branch-name}.md`. Create `var/tasks/` if it does not exist. `var/` is gitignored on purpose don't include in git commit
+7. Stage and commit ONLY the source files touched by the code change. Use a conventional commit message referencing the issue. The `var/tasks/{branch-name}.md` file from step 6 stays unstaged and uncommitted.
 8. Push the branch
 9. Open a pull request with `gh pr create` targeting the default branch, referencing the issue in the PR body
 
