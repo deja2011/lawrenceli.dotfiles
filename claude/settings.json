@@ -19,6 +19,6 @@
       }
     }
   },
-  "effortLevel": "xhigh",
+  "effortLevel": "high",
   "skipAutoPermissionPrompt": true
 }
