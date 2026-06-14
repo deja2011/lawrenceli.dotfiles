@@ -2,6 +2,7 @@
   "permissions": {
     "defaultMode": "auto"
   },
+  "model": "opus",
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.sh"
@@ -19,5 +20,6 @@
     }
   },
   "effortLevel": "medium",
-  "model": "opus"
+  "autoCompactEnabled": false,
+  "skipAutoPermissionPrompt": true
 }
