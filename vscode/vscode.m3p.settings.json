@@ -1,0 +1,33 @@
+{
+    "redhat.telemetry.enabled": true,
+    "editor.fontFamily": "'DejaVu Sans Mono', Menlo, Monaco, 'Courier New', monospace",
+    "githubPullRequests.terminalLinksHandler": "github",
+    "editor.fontSize": 13,
+    "python.analysis.typeCheckingMode": "standard",
+    "python.analysis.diagnosticSeverityOverrides": {
+        
+    },
+    "github.copilot.nextEditSuggestions.enabled": false,
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": true,
+        "scminput": false,
+        "python": true,
+        "shellscript": true,
+        "rust": true
+    },
+    "chat.tools.terminal.autoApprove": {
+        "cargo run": true
+    },
+    "chat.tools.urls.autoApprove": {
+        "https://docs.cdp.coinbase.com": {
+            "approveRequest": true,
+            "approveResponse": false
+        }
+    },
+    "claudeCode.preferredLocation": "sidebar",
+    "claudeCode.selectedModel": "default",
+    "makefile.configureOnOpen": true,
+    "notebook.lineNumbers": "on"
+}

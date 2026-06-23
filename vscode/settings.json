@@ -1,0 +1,15 @@
+{
+    // ---- Editor / appearance ----
+    "editor.fontFamily": "'DejaVu Sans Mono', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 13,
+    "notebook.lineNumbers": "on",
+
+    // ---- Python ----
+    "python.analysis.typeCheckingMode": "standard",
+
+    // ---- Git ----
+    "git.openRepositoryInParentFolders": "never",
+
+    // ---- Claude Code ----
+    "claudeCode.preferredLocation": "sidebar"
+}
