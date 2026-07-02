@@ -23,6 +23,8 @@
     "enabled": true,
     "mode": "hold"
   },
+  "tui": "default",
+  "theme": "dark",
   "autoCompactEnabled": false,
   "skipAutoPermissionPrompt": true,
   "voiceEnabled": true
