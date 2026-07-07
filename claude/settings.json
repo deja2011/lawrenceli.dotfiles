@@ -2,7 +2,6 @@
   "permissions": {
     "defaultMode": "auto"
   },
-  "model": "opus[1m]",
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.sh"
@@ -20,7 +19,6 @@
     }
   },
   "effortLevel": "medium",
-  "tui": "default",
   "voice": {
     "enabled": true,
     "mode": "hold"
