@@ -10,14 +10,6 @@
   "enabledPlugins": {
     "discord@claude-plugins-official": false
   },
-  "extraKnownMarketplaces": {
-    "thedotmack": {
-      "source": {
-        "source": "github",
-        "repo": "thedotmack/claude-mem"
-      }
-    }
-  },
   "effortLevel": "medium",
   "tui": "default",
   "voice": {
@@ -27,6 +19,5 @@
   "theme": "dark",
   "autoCompactEnabled": false,
   "agentPushNotifEnabled": true,
-  "skipAutoPermissionPrompt": true,
-  "voiceEnabled": true
+  "skipAutoPermissionPrompt": true
 }
