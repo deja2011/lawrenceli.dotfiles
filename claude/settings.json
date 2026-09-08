@@ -2,6 +2,7 @@
   "permissions": {
     "defaultMode": "auto"
   },
+  "model": "opus",
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.sh"
@@ -18,13 +19,14 @@
     }
   },
   "effortLevel": "medium",
+  "tui": "default",
   "voice": {
     "enabled": true,
     "mode": "hold"
   },
-  "tui": "default",
   "theme": "dark",
   "autoCompactEnabled": false,
+  "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
   "voiceEnabled": true
 }

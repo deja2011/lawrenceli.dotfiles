@@ -2,6 +2,11 @@
     // ---- Editor / appearance ----
     "editor.fontFamily": "'DejaVu Sans Mono', Menlo, Monaco, 'Courier New', monospace",
     "editor.fontSize": 13,
+    "workbench.editorAssociations": {
+        "*.md": "vscode.markdown.preview.editor"
+    },
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
     "notebook.lineNumbers": "on",
     "notebook.markup.fontSize": 16,
 

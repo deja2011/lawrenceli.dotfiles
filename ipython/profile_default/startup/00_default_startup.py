@@ -57,8 +57,8 @@ def mid_diff_spread(bid: float, ask: float) -> tuple[float, float, float]:
     return mid, diff, spread
 
 
-def slugify(text: str) -> str:
-    return re.sub(r"[^a-zA-Z0-9]+", "-", text.lower()).strip("-")
+def slugify(text: str, sep: str = "-") -> str:
+    return re.sub(r"[^a-zA-Z0-9]+", sep, text.lower()).strip(sep)
 
 
 print("Done")
