@@ -7,7 +7,6 @@
     "command": "~/.claude/statusline.sh"
   },
   "enabledPlugins": {
-    "claude-mem@thedotmack": true,
     "discord@claude-plugins-official": false
   },
   "extraKnownMarketplaces": {
