@@ -11,6 +11,11 @@
     "discord@claude-plugins-official": false
   },
   "effortLevel": "medium",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "medium"
+    }
+  },
   "tui": "default",
   "voice": {
     "enabled": true,
@@ -19,5 +24,6 @@
   "theme": "dark",
   "autoCompactEnabled": false,
   "agentPushNotifEnabled": true,
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "outputStyle": "Concise"
 }
