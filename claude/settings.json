@@ -10,6 +10,7 @@
   "enabledPlugins": {
     "discord@claude-plugins-official": false
   },
+  "outputStyle": "Concise",
   "effortLevel": "medium",
   "modelSettings": {
     "claude-opus-5-5": {
@@ -24,6 +25,5 @@
   "theme": "dark",
   "autoCompactEnabled": false,
   "agentPushNotifEnabled": true,
-  "skipAutoPermissionPrompt": true,
-  "outputStyle": "Concise"
+  "skipAutoPermissionPrompt": true
 }
