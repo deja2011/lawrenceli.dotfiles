@@ -8,7 +8,7 @@
     "workbench.editor.enablePreview": false,
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "notebook.lineNumbers": "on",
-    "notebook.markup.fontSize": 16,
+    "notebook.markup.fontSize": 18,
 
     // ---- Python ----
     "python.analysis.typeCheckingMode": "standard",
@@ -18,7 +18,11 @@
 
     // ---- Claude Code ----
     "claudeCode.preferredLocation": "sidebar",
+    "claudeCode.hideOnboarding": true,
+
+    // ---- Copilot ----
+    "github.copilot.enable": { "*": false},
 
     // ---- Theme ----
-    "workbench.colorTheme": "Dracula Theme"
+    "workbench.colorTheme": "Dracula Theme",
 }
